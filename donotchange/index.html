@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+  <!-- 이 head 안에 부분에서 글씨체 바꾸기하고 css 만들어서 연결시켜주면 되는 듯 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/default.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/qna.css">
+    <link rel="stylesheet" href="./css/result.css">
+    <style>
+      body {
+        /* font-family: Arial, sans-serif; */
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .question {
+        margin-bottom: 20px;
+        padding: 20px;
+        border: 1px solid #ccc;
+      }
+
+      .options button {
+        margin: 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        cursor: pointer;
+      }
+
+      .options button:hover {
+        background-color: #f2f2f2;
+      }
+
+      .options button.correct {
+        border-color: #4CAF50;
+        background-color: #4CAF50;
+        color: #fff;
+      }
+
+      .options button.incorrect {
+        border-color: #f44336;
+        background-color: #f44336;
+        color: #fff;
+      }
+
+      .result {
+        font-size: 24px;
+        text-align: center;
+      }
+
+      .result .correct {
+        color: #4CAF50;
+      }
+
+      .result .incorrect {
+        color: #f44336;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div id="start-page">
+        <h1>퀴즈타임!!</h1>
+        <p>아래 버튼을 눌러 시작하세요.</p>
+        <button id="start-button">시작하기</button>
+      </div>
+
+<!-- 여기부터 문항 시작됨.---------------------------------------------------------------------- -->
+      <div id="question-1" class="question">
+        <h2>1번</h2>
+        <p>바늘에 있는 실 끼우는 구멍은? <br> 예시: 요즘 취업문이 바늘귀처럼 좁다. </p>
+        <div class="options">
+          <button data-correct="false">바늘뒤</button>
+          <br>
+          <button data-correct="false">바늘손</button>
+          <br>
+          <button data-correct="true">바늘귀</button>
+        </div>
+        <div class="feedback"></div>
+      </div>
+
+      <div id="question-2" class="question">
+        <h2>2번</h2>
+        <p>더 나빠지거나 더 어려워지는걸 뜻하는 말은? <br> 예시1: 증상이 더 ㅇㅇ되었다. <br> 예시2: ㅇㅇ수학은 더 어려운 수준의 수학을 뜻한다. </p>
+        <div class="options">
+          <button data-correct="false">순화</button>
+          <br>
+          <button data-correct="true">심화</button>
+          <br>
+          <button data-correct="false">강화</button>
+        </div>
+        <div class="feedback"></div>
+      </div>
+
+      <div id="question-3" class="question">
+        <h2>3번</h2>
+        <p>무언가를 더 강하게 하거나 수준이나 정도를 더 높이는걸 뜻하는 말은? <br> 예시1: 체력을 ㅇㅇ 시키는 운동입니다.<br> 예시2: 시험에서 컨닝을 못하도록 감시를 ㅇㅇ했다. </p>
+        <div class="options">
+          <button data-correct="true">강화</button><br>
+          <button data-correct="false">심화</button><br>
+          <button data-correct="false">순화</button>
+          
+        </div>
+        <div class="feedback"></div>
+      </div>      
+      
+      <div id="question-4" class="question">
+        <h2>4번</h2>
+        <p>길가에 심어진 나무는? <br> 예시: ㅇㅇㅇ 그늘 밑에서 잠깐 쉬자.</p>
+        <div class="options">
+          <button data-correct="false">가르마</button><br>
+          <button data-correct="false">가로등</button><br>
+          <button data-correct="true">가로수</button>
+        </div>
+        <div class="feedback"></div>
+      </div>      
+      
+      <div id="question-5" class="question">
+        <h2>5번</h2>
+        <p>닭고기, 돼지고기, 소고기 등 고기를 통틀어 부르는 말은? <br> 채식주의자는 ㅇㅇ를 먹지 않는다. </p>
+        <div class="options">
+          <button data-correct="flase">유류</button><br>
+          <button data-correct="false">해류</button><br>
+          <button data-correct="true">육류</button>
+        </div>
+        <div class="feedback"></div>
+      </div>
+        
+      <div id="question-6" class="question">
+        <h2>6번</h2>
+        <p>김밥에 들어가는 재료로 게 맛이 나는 식재료는? <br> 저는 갑각류 알러지가 있어서 ____은 못 먹어요. </p>
+        <div class="options">
+          <button data-correct="true">맛살</button><br>
+          <button data-correct="false">햄</button><br>
+          <button data-correct="false">우엉</button>
+        </div>
+        <div class="feedback"></div>
+      </div>
+
+<!-- 문항 끝----------------------------------------------------------------------------------------------------------------------------------------- -->
+
+      <!-- 결과창!!!! ------------------------------------->
+      <div id="result-page">
+        <h1>퀴즈 완료!</h1>
+        <!-- <div class="result">
+          별 <span class="correct-count"></span> 개 획득!
+        </div> -->
+      </div>
+      <!--이부분에서 java script와 연결 써주면 된느 듯함. <script src="./js/data.js" charset="utf-8"></script>
+      <script src="./js/start.js" charset="utf-8"></script>
+      <script src="./js/share.js" charset="utf-8"></script> -->
+    </div>
+  </body>
+
+  <!-- 이걸 전부 js 파일 만들어서 옮기면 되는 듯 -->
+  <script>
+    $(document).ready(function() {
+  // Hide all question and result pages except the start page
+  $('#start-page').show();
+  $('.question').hide();
+  $('#result-page').hide();
+
+  // Start the quiz when the Start button is clicked
+  $('#start-button').click(function() {
+    $('#start-page').hide();
+    $('#question-1').show();
+  });
+
+  // Handle the click event for each answer button
+  $('.question .options button').click(function() {
+    // Disable all answer buttons to prevent multiple clicks
+    $(this).siblings().attr('disabled', true);
+
+    // Display feedback depending on whether the answer is correct or not
+    if ($(this).data('correct')) {
+      $(this).addClass('correct');
+      $(this).parent().siblings('.feedback').html('<span class="correct">정답!</span>');
+
+      // Hide the current question and show the next one (if any)
+      var currentQuestion = $(this).closest('.question');
+      var nextQuestion = currentQuestion.next('.question');
+      if (nextQuestion.length > 0) {
+        setTimeout(function() {
+          currentQuestion.hide();
+          nextQuestion.show();
+        }, 1000);
+      } else {
+        // Show the result page when all questions are answered
+        setTimeout(function() {
+          var correctCount = $('.question .options button.correct').length;
+          $('#result-page .correct-count').text(correctCount);
+          $('#result-page').show();
+        }, 1000);
+      }
+    } else {
+      $(this).addClass('incorrect');
+      $(this).parent().siblings('.feedback').html('<span class="incorrect">다시 시도하세요</span>');
+
+      // Re-enable all answer buttons and wait for the user to try again
+      $(this).siblings().attr('disabled', false);
+    }
+  });
+});
+  </script>
